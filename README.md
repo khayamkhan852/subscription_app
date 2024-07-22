@@ -1,7 +1,7 @@
 <div align="center" markdown="1">
 	<h2>BOT Subscription App</h2>
 	<p align="center">
-	    <p>A Small Frappe App to manage Subscriptions</p>
+	    <p>A Small Frappe App for BOT Solutions to manage Subscriptions of Customers</p>
 	</p>
   
 [botsolutions.tech](https://botsolutions.tech/)
@@ -17,9 +17,8 @@
 3. Open another terminal in bench directory, and run these commands
 
 	```
-	bench get-app bot_subscription_app https://github.com/khayamkhan852/bot_subscription_app.git
-	bench new-site frappe.test
-	bench --site frappe.test install-app bot_subscription_app
+	bench get-app subscription_app https://github.com/khayamkhan852/subscription_app.git
+	bench --site frappe.test install-app subscription_app
 	```
 
 
