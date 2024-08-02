@@ -1,0 +1,12 @@
+[
+    {
+        "docstatus": 0,
+        "doctype": "Email Template",
+        "modified": "2024-07-26 14:43:06.152445",
+        "name": "Bot Subscription Email",
+        "response": "<div class=\"ql-editor read-mode\"><p>dear {{ customer }},</p><p>Your subscription is ending soon.</p><p>please subscribe as soon as possible.</p></div>",
+        "response_html": null,
+        "subject": "dear {{ customer }} your subscription is ending",
+        "use_html": 0
+    }
+]

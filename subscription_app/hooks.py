@@ -6,6 +6,10 @@ app_email = "khayamkhan852@gmail.com"
 app_license = "mit"
 # required_apps = []
 
+fixtures = [
+    "Email Template"
+]
+
 # Includes in <head>
 # ------------------
 
@@ -133,23 +137,23 @@ app_license = "mit"
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
-# 	"all": [
-# 		"subscription_app.tasks.all"
-# 	],
-# 	"daily": [
-# 		"subscription_app.tasks.daily"
-# 	],
-# 	"hourly": [
-# 		"subscription_app.tasks.hourly"
-# 	],
-# 	"weekly": [
-# 		"subscription_app.tasks.weekly"
-# 	],
-# 	"monthly": [
-# 		"subscription_app.tasks.monthly"
-# 	],
-# }
+scheduler_events = {
+	# "all": [
+	# 	"subscription_app.tasks.all"
+	# ],
+	"daily": [
+		"subscription_app.subscription_app.doctype.bot_subscription.bot_subscription.send_reminder_emails"
+	],
+	# "hourly": [
+	# 	"subscription_app.tasks.hourly"
+	# ],
+	# "weekly": [
+	# 	"subscription_app.tasks.weekly"
+	# ],
+	# "monthly": [
+	# 	"subscription_app.tasks.monthly"
+	# ],
+}
 
 # Testing
 # -------
