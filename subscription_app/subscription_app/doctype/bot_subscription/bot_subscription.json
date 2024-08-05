@@ -9,13 +9,14 @@
         "add_subscription_section",
         "customer",
         "start_date",
-        "remind_before_days",
+        "total_days",
         "send_reminder",
         "send_email_to_admin",
         "auto_renew",
         "column_break_tbwy",
         "item",
         "end_date",
+        "remind_before_days",
         "email_tab",
         "email_template"
     ],
@@ -98,16 +99,24 @@
             "label": "Email"
         },
         {
+            "default": "Bot Subscription Email",
             "fieldname": "email_template",
             "fieldtype": "Link",
             "label": "Email Template",
             "options": "Email Template",
             "reqd": 1
+        },
+        {
+            "allow_in_quick_entry": 1,
+            "fieldname": "total_days",
+            "fieldtype": "Int",
+            "label": "Total Days",
+            "read_only": 1
         }
     ],
     "index_web_pages_for_search": 1,
     "links": [],
-    "modified": "2024-08-02 09:42:39.608638",
+    "modified": "2024-08-05 14:42:28.805823",
     "modified_by": "Administrator",
     "module": "Subscription App",
     "name": "Bot Subscription",

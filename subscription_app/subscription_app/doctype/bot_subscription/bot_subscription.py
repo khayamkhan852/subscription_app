@@ -18,9 +18,10 @@ def auto_renewal_subscription():
 		difference_of_date = date_diff(bot_subscription.end_date, today())
 		
 		if (difference_of_date == 0):
+			day_difference = date_diff(bot_subscription.end_date, bot_subscription.start_date)
 			
-			new_start_date = add_to_date(bot_subscription.start_date, years=1)
-			new_end_date = add_to_date(bot_subscription.end_date, years=1)
+			new_start_date = add_to_date(bot_subscription.start_date, days=(day_difference + 1))
+			new_end_date = add_to_date(bot_subscription.end_date, days=(day_difference + 1))
 
 			new_doc = frappe.get_doc('Bot Subscription', bot_subscription.name)
 
@@ -71,7 +72,6 @@ def send_reminder_email_to_admin():
 
 			if (super_admin_email and super_admin_email is not None):
 				frappe.sendmail( subject=subject, recipients = [super_admin_email], message = message)
-				
 
 def get_customer_email(customer):
 	address_links = frappe.get_all('Dynamic Link', filters={
