@@ -2,11 +2,11 @@
     {
         "docstatus": 0,
         "doctype": "Email Template",
-        "modified": "2024-07-26 14:43:06.152445",
+        "modified": "2024-08-05 11:04:01.968483",
         "name": "Bot Subscription Email",
-        "response": "<div class=\"ql-editor read-mode\"><p>dear {{ customer }},</p><p>Your subscription is ending soon.</p><p>please subscribe as soon as possible.</p></div>",
+        "response": "<div class=\"ql-editor read-mode\"><p>Dear {{ customer }},</p><p><br></p><p>We hope this message finds you well. We wanted to inform you that your subscription is set to expire on {{ end_date }}.</p><p><br></p><p>To continue enjoying uninterrupted access to our services, we encourage you to renew your subscription. Renewing your subscription is simple and ensures you won't miss out on any of the benefits you currently enjoy.</p><p><br></p><p>If you have any questions or need assistance, feel free to contact our support team.</p><p><br></p><p>Thank you for choosing BOT Solutions. We look forward to serving you in the future.</p><p><br></p><p>Best regards</p></div>",
         "response_html": null,
-        "subject": "dear {{ customer }} your subscription is ending",
+        "subject": "dear {{ customer }}, Your subscription is ending",
         "use_html": 0
     }
 ]

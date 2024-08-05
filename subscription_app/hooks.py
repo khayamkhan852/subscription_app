@@ -138,12 +138,19 @@ fixtures = [
 # ---------------
 
 scheduler_events = {
+	"cron": {
+		"0 10 * * *": [ # Daily at 10 AM
+			"subscription_app.subscription_app.doctype.bot_subscription.bot_subscription.auto_renewal_subscription",
+			"subscription_app.subscription_app.doctype.bot_subscription.bot_subscription.send_reminder_email_to_customer",
+			"subscription_app.subscription_app.doctype.bot_subscription.bot_subscription.send_reminder_email_to_admin"
+        ],
+    },
 	# "all": [
 	# 	"subscription_app.tasks.all"
 	# ],
-	"daily": [
-		"subscription_app.subscription_app.doctype.bot_subscription.bot_subscription.send_reminder_emails"
-	],
+	# "daily": [
+		# "subscription_app.subscription_app.doctype.bot_subscription.bot_subscription.send_reminder_emails"
+	# ],
 	# "hourly": [
 	# 	"subscription_app.tasks.hourly"
 	# ],
