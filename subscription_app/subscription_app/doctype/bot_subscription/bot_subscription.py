@@ -8,8 +8,8 @@ from frappe.utils import today, add_to_date, date_diff
 
 
 class BotSubscription(Document):
-	pass
-
+	pass	
+		
 
 def auto_renewal_subscription():
 	bot_subscriptions = frappe.get_all('Bot Subscription', fields=['customer', 'end_date', 'start_date', 'auto_renew', 'name'], filters={'auto_renew': 1})
@@ -41,15 +41,15 @@ def send_reminder_email_to_customer():
 		difference_of_date = date_diff(reminder_date, today())
 	
 		if (difference_of_date == 0):
-			customer_email = get_customer_email(customer=bot_subscription.customer)
+			customer_emails = get_customer_emails(customer=bot_subscription.customer)
 
-			parent_doc = frappe.get_doc('Bot Subscription', bot_subscription)
-			email_template = frappe.get_doc('Email Template', bot_subscription.email_template)
-			subject = frappe.render_template(email_template.subject, parent_doc.as_dict())
-			message = frappe.render_template(email_template.response, parent_doc.as_dict())
-
-			if (customer_email and customer_email is not None):
-				frappe.sendmail( subject=subject, recipients = [customer_email], message = message)
+			if (customer_emails):
+				parent_doc = frappe.get_doc('Bot Subscription', bot_subscription)
+				email_template = frappe.get_doc('Email Template', bot_subscription.email_template)
+				subject = frappe.render_template(email_template.subject, parent_doc.as_dict())
+				message = frappe.render_template(email_template.response, parent_doc.as_dict())
+				
+				frappe.sendmail(subject=subject, recipients=customer_emails, message = message)
 
 
 def send_reminder_email_to_admin():
@@ -73,15 +73,20 @@ def send_reminder_email_to_admin():
 			if (super_admin_email and super_admin_email is not None):
 				frappe.sendmail( subject=subject, recipients = [super_admin_email], message = message)
 
-def get_customer_email(customer):
-	address_links = frappe.get_all('Dynamic Link', filters={
-		'parenttype': 'Address',
+
+def get_customer_emails(customer):
+	contact_links = frappe.get_all('Dynamic Link', filters={
+		'parenttype': 'Contact',
 		'link_doctype': 'Customer',
-		'link_name': customer
-	}, fields=['parent'])
+        'link_name': customer
+    }, fields=['parent'])
 	
-	for link in address_links:
-		email = frappe.get_value('Address', link.parent, 'email_id')
-		if email:
-			return email			
-	return None
+	emails = []
+	
+	for link in contact_links:
+		contact_emails = frappe.get_all('Contact Email', filters={'parent': link.parent}, fields=['email_id'])
+		for email in contact_emails:
+			if email.email_id:
+				emails.append(email.email_id)
+	
+	return emails if emails else None	
